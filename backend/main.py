@@ -23,10 +23,11 @@ app = FastAPI(title="DocuMind RAG Chat API")
 # Allow the React frontend to connect to the backend.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows requests from any frontend, mobile browser, or domain
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, OPTIONS, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Create the RAG pipeline only when a PDF is uploaded.
